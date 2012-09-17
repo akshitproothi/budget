@@ -2,7 +2,7 @@
 
 session_start();
 
-require_once('DbFactory.php');
+require_once('PdoDbFactory.php');
 
 if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) {
     header('location:summary.php');
@@ -17,8 +17,8 @@ if (
 ) {
     $sql = "INSERT INTO tb_user (`username`, `password`, `fname`, `lname`, `datetime_created`, `datetime_updated`) VALUES (:username, :password, :fname, :lname, NOW(), NOW())";
     $parameters = array('username'=>$_POST['username'], 'password'=>sha1($_POST['password']), 'fname'=>$_POST['fname'], 'lname'=>$_POST['lname']);
-    $datatypes  = array('username'=>'s', 'password'=>'s', 'fname'=>'s', 'lname'=>'s');
-    $result = DbFactory::queryDb($sql, $parameters, $datatypes);
+    $datatypes  = array('username'=>PDO::PARAM_STR, 'password'=>PDO::PARAM_STR, 'fname'=>PDO::PARAM_STR, 'lname'=>PDO::PARAM_STR);
+    $result = PdoDbFactory::queryDb($sql, $parameters, $datatypes);
     
     if (isset($result['newid']) && $result['newid'] > 0) {
         $_SESSION['isLoggedIn'] = true;
