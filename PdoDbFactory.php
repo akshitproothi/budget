@@ -30,6 +30,8 @@ class PdoDbFactory{
             
             $ps = $pdo->prepare($sql);
             
+            // Parameters and datatypes are bound by reference,
+            // so do not delete the 2 arrays until execute has happened.
             foreach($parameters as $key=>$value) {
                 $ps->bindParam(':'.$key, $parameters[$key], $datatypes[$key]);
             }
