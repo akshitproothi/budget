@@ -2,7 +2,22 @@
 
 class DbFactory{
     public static function getDbConnection() {
-        $db = new mysqli('localhost', 'root', '', 'budget_db');
+        $debug = true;
+        $credentials = array();
+        
+        if ($debug) {
+            $credentials['host'] = 'localhost';
+            $credentials['username'] = 'root';
+            $credentials['password'] = '';
+            $credentials['database'] = 'budget_db';
+        } else {
+            $credentials['host'] = 'spendmeter.zymichost.com';
+            $credentials['username'] = '788031_aproothi';
+            $credentials['password'] = 'labyrinth1';
+            $credentials['database'] = 'spendmeter_zymichost_budget';
+        }
+        
+        $db = new mysqli($credentials['host'], $credentials['username'], $credentials['password'], $credentials['database']);
 
         if($db->connect_errno > 0) {
             die('Unable to connect to database [' . $db->connect_error . ']');

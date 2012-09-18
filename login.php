@@ -2,7 +2,7 @@
 
 session_start();
 
-require_once('PdoDbFactory.php');
+require_once('DbFactory.php');
 
 $errorMessage = '';
 
@@ -14,9 +14,9 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) {
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $sql = 'SELECT pk_user_id, username, fname, lname FROM tb_user WHERE username = :username AND password = :password LIMIT 1';
     $parameters = array('username'=>$_POST['username'], 'password'=>sha1($_POST['password']));
-    $datatypes  = array('username'=>PDO::PARAM_STR, 'password'=>PDO::PARAM_STR);
-    $result = PdoDbFactory::queryDb($sql, $parameters, $datatypes);
-
+    $datatypes  = array('username'=>'s', 'password'=>'s');
+    $result = DbFactory::queryDb($sql, $parameters, $datatypes);
+    
     if (count($result) > 0 && $result[0]->username == $_POST['username']) {
         $_SESSION['isLoggedIn'] = true;
         $_SESSION['user']['id'] = $result[0]->pk_user_id;
@@ -28,7 +28,6 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     } else {
         $errorMessage = 'Invalid Username or Password.';
     }
-
 }
 
 ?>
