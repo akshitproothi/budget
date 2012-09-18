@@ -31,7 +31,7 @@ class PdoDbFactory{
             $ps = $pdo->prepare($sql);
             
             foreach($parameters as $key=>$value) {
-                $ps->bindValue(':'.$key, $value, $datatypes[$key]);
+                $ps->bindParam(':'.$key, $parameters[$key], $datatypes[$key]);
             }
 
             $ps->execute();
