@@ -1,0 +1,53 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+DbFactory	C:\xampp\htdocs\budget\DbFactory.php	3;"	kind:class	line:3	language:PHP
+PdoDbFactory	C:\xampp\htdocs\budget\PdoDbFactory.php	3;"	kind:class	line:3	language:PHP
+TrxnFactory	C:\xampp\htdocs\budget\TrxnFactory.php	3;"	kind:class	line:3	language:PHP
+bindingparams	C:\xampp\htdocs\budget\DbFactory.php	55;"	kind:variable	line:55	language:PHP
+closeDbConnection	C:\xampp\htdocs\budget\DbFactory.php	29;"	kind:function	line:29	language:PHP
+closeDbConnection	C:\xampp\htdocs\budget\PdoDbFactory.php	22;"	kind:function	line:22	language:PHP
+credentials	C:\xampp\htdocs\budget\DbFactory.php	6;"	kind:variable	line:6	language:PHP
+currUserName	C:\xampp\htdocs\budget\summary.php	12;"	kind:variable	line:12	language:PHP
+dataObj	C:\xampp\htdocs\budget\DbFactory.php	67;"	kind:variable	line:67	language:PHP
+dataObj	C:\xampp\htdocs\budget\PdoDbFactory.php	27;"	kind:variable	line:27	language:PHP
+dataObj	C:\xampp\htdocs\budget\PdoDbFactory.php	41;"	kind:variable	line:41	language:PHP
+datatypes	C:\xampp\htdocs\budget\login.php	17;"	kind:variable	line:17	language:PHP
+datatypes	C:\xampp\htdocs\budget\newuser.php	20;"	kind:variable	line:20	language:PHP
+db	C:\xampp\htdocs\budget\DbFactory.php	20;"	kind:variable	line:20	language:PHP
+db	C:\xampp\htdocs\budget\DbFactory.php	34;"	kind:variable	line:34	language:PHP
+debug	C:\xampp\htdocs\budget\DbFactory.php	5;"	kind:variable	line:5	language:PHP
+dsn	C:\xampp\htdocs\budget\PdoDbFactory.php	5;"	kind:variable	line:5	language:PHP
+errorMessage	C:\xampp\htdocs\budget\login.php	29;"	kind:variable	line:29	language:PHP
+errorMessage	C:\xampp\htdocs\budget\login.php	7;"	kind:variable	line:7	language:PHP
+fields	C:\xampp\htdocs\budget\DbFactory.php	71;"	kind:variable	line:71	language:PHP
+getDbConnection	C:\xampp\htdocs\budget\DbFactory.php	4;"	kind:function	line:4	language:PHP
+getDbConnection	C:\xampp\htdocs\budget\PdoDbFactory.php	4;"	kind:function	line:4	language:PHP
+i	C:\xampp\htdocs\budget\DbFactory.php	56;"	kind:variable	line:56	language:PHP
+key	C:\xampp\htdocs\budget\PdoDbFactory.php	35;"	kind:variable	line:35	language:PHP
+metaResults	C:\xampp\htdocs\budget\DbFactory.php	69;"	kind:variable	line:69	language:PHP
+newid	C:\xampp\htdocs\budget\DbFactory.php	88;"	kind:variable	line:88	language:PHP
+opt	C:\xampp\htdocs\budget\PdoDbFactory.php	6;"	kind:variable	line:6	language:PHP
+parameters	C:\xampp\htdocs\budget\DbFactory.php	33;"	kind:variable	line:33	language:PHP
+parameters	C:\xampp\htdocs\budget\PdoDbFactory.php	26;"	kind:variable	line:26	language:PHP
+parameters	C:\xampp\htdocs\budget\login.php	16;"	kind:variable	line:16	language:PHP
+parameters	C:\xampp\htdocs\budget\newuser.php	19;"	kind:variable	line:19	language:PHP
+params	C:\xampp\htdocs\budget\DbFactory.php	36;"	kind:variable	line:36	language:PHP
+pdo	C:\xampp\htdocs\budget\PdoDbFactory.php	13;"	kind:variable	line:13	language:PHP
+pdo	C:\xampp\htdocs\budget\PdoDbFactory.php	23;"	kind:variable	line:23	language:PHP
+pdo	C:\xampp\htdocs\budget\PdoDbFactory.php	29;"	kind:variable	line:29	language:PHP
+ps	C:\xampp\htdocs\budget\PdoDbFactory.php	31;"	kind:variable	line:31	language:PHP
+queryDb	C:\xampp\htdocs\budget\DbFactory.php	33;"	kind:function	line:33	language:PHP
+queryDb	C:\xampp\htdocs\budget\PdoDbFactory.php	26;"	kind:function	line:26	language:PHP
+result	C:\xampp\htdocs\budget\login.php	18;"	kind:variable	line:18	language:PHP
+result	C:\xampp\htdocs\budget\newuser.php	21;"	kind:variable	line:21	language:PHP
+sql	C:\xampp\htdocs\budget\DbFactory.php	49;"	kind:variable	line:49	language:PHP
+sql	C:\xampp\htdocs\budget\login.php	15;"	kind:variable	line:15	language:PHP
+sql	C:\xampp\htdocs\budget\newuser.php	18;"	kind:variable	line:18	language:PHP
+statement	C:\xampp\htdocs\budget\DbFactory.php	51;"	kind:variable	line:51	language:PHP
+statementParams	C:\xampp\htdocs\budget\DbFactory.php	73;"	kind:variable	line:73	language:PHP
+stmt	C:\xampp\htdocs\budget\DbFactory.php	81;"	kind:variable	line:81	language:PHP
+types	C:\xampp\htdocs\budget\DbFactory.php	37;"	kind:variable	line:37	language:PHP

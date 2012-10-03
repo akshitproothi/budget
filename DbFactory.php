@@ -65,6 +65,7 @@ class DbFactory{
             $statement->execute();
             
             $dataObj = array();
+            $ctr = 0;
 
             $metaResults = $statement->result_metadata();
             if ($metaResults) {
@@ -82,7 +83,10 @@ class DbFactory{
                 eval($stmt);
 
                 while($statement->fetch()){
-                    $dataObj[] = (object)$row;
+                    foreach($row as $key => $val) {
+                        $c[$key] = $val;
+                    }
+                    $dataObj[] = (object) $c;
                 }
             } else {
                 $newid = $db->insert_id;
