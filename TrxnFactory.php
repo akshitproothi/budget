@@ -55,7 +55,7 @@ class TrxnFactory {
             $summary['trxns'][] = $r;
             if ($r->type == 'spend') {
                 $sum += $r->amount;
-            } elseif ($r->type == 'spend') {
+            } elseif ($r->type == 'earn') {
                 $sum -= $r->amount;
             }
         }
