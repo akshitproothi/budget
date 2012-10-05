@@ -15,8 +15,17 @@ $amount     = $_POST['amount'];
 $category   = $_POST['category'];
 $trxntype   = $_POST['trxntype'];
 
-TrxnFactory::addTrxn($user, $desc, $amount, $category, $trxntype);
-header('location:summary.php');
+$success = false;
+
+if (!is_numeric($amount)) {
+    $success = false;
+} else {
+    $newid = TrxnFactory::addTrxn($user, $desc, $amount, $category, $trxntype);
+    if ($newid > 0) {
+        $success = true;
+    }
+}
+header('location:summary.php?status='.$success);
 exit;
 
 ?>

@@ -50,6 +50,8 @@ class TrxnFactory {
         $result = DbFactory::queryDb($sql, $parameters, $datatypes);
         
         $summary = array();
+        $summary['trxns'] = array();
+
         $sum = 0;
         foreach ($result as $r) {
             $summary['trxns'][] = $r;
