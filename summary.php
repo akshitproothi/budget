@@ -15,11 +15,56 @@ $summary = TrxnFactory::getTrxnSummary($_SESSION['user']['id']);
 $trxns   = $summary['trxns'];
 $total   = $summary['sum'];
 
+$categories = TrxnFactory::getCategories();
+$trxnTypes  = TrxnFactory::getTypes();
+
 ?>
 
 <link rel="stylesheet" type="text/css" href="commonstyle.css" />
 
 <style>
+
+body {
+	background: #ccc;
+	margin: 0;
+	padding: 0;
+}
+
+.mainContainer{
+	width: 900px;
+	margin: 0 auto;
+	background: #fff;
+}
+
+.content{
+	padding: 30px;
+}
+
+.content h1{
+    margin: 0;
+}
+
+.header{
+    margin: 0 0 2em 0;
+}
+
+.header a{
+    text-align: right;
+}
+
+.content h3{
+    margin: 0;
+}
+
+.blockHeader{
+	border: 1px solid #DDD;
+	display: inline-block;
+	padding: 0.4em;
+	border-bottom: none;
+	border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    background: #EEE;
+}
 
 #trxnsummary ul{
     list-style: none;
@@ -29,13 +74,14 @@ $total   = $summary['sum'];
 
 #trxnsummary .trxnrow li{
     display: inline-block;
-    width: 100px;
+    width: 275px;
     border: 1px solid #aaa;
     margin: 0;
     padding: 0;
     padding-left: 5px;
     text-transform: capitalize;
     background: #fff;
+    margin-right: -5px;
 }
 
 #trxnsummary .earn li{
@@ -54,6 +100,8 @@ $total   = $summary['sum'];
 
 #addTrxnForm{
     width: 600px;
+    border: 1px solid #DDD;
+    padding: 1em;
 }
 
 #addTrxnForm input[type="submit"]{
@@ -62,74 +110,75 @@ $total   = $summary['sum'];
 
 </style>
 
-<h3>Budget for <?=$currUserName?></h3>
-
-<form method='POST' action='AddTrxn.php' class='budget-grid' id='addTrxnForm'>
-	<label class='budget-unit size1of2' for='desc'>Describe your transaction breifly (optional): </label>
-	<input class='budget-unit size1of2' type='text' name='desc' />
-	<br/>
-	<label class='budget-unit size1of2' for='amount'>Amount: </label>
-	<input class='budget-unit size1of6' type='number' name='amount' />
-	<br/>
-	<label class='budget-unit size1of2' for='category'>Category: </label>
-	<select class='budget-unit' name='category'>
-		<option value='1'>Food</option>
-		<option value='2'>Clothes</option>
-		<option value='3'>Movies</option>
-		<option value='4'>Stationery</option>
-		<option value='5'>Travel</option>
-		<option value='6'>Electronics</option>
-		<option value='7'>Home</option>
-		<option value='8'>Health</option>
-		<option value='9'>Beauty</option>
-		<option value='10'>Sports</option>
-		<option value='11'>Other</option>
-		<option value='12'>Salary</option>
-	</select>
-	<br/>
-	<label class='budget-unit size1of2' for='trxntype'>Type: </label>
-	<select class='budget-unit' name='trxntype'>
-		<option value='1'>Spend</option>
-		<option value='2'>Earn</option>
-	</select>
-    <br/>
-    <input type='submit' value='Submit' />
-</form>
-
-<br/>
-
-<h4>Summary</h4>
-<div id='trxnsummary'>
-    <ul>
-        <li>
-            <ul class='trxnrow header'>
-                <li>Category</li>
-                <li>Description</li>
-                <li>Amount</li>
-            </ul>
-        </li>
-        <?php foreach ($trxns as $trxn) { ?>
-        <li>
-            <ul class='trxnrow <?php if($trxn->type=='earn'){ echo 'earn';}?>'>
-                <li><?=$trxn->category?></li>
-                <li><?=$trxn->description?></li>
-                <li><?=(($trxn->type=='earn')?'-':'').'$'.number_format($trxn->amount, 2);?></li>
-            </ul>
-        </li>
-        <?php } ?>
-        <li>
-            <ul class='trxnrow header'>
-                <li class='empty'></li>
-                <li>Total spent: </li>
-                <li><?='$'.number_format($total, 2);?></li>
-            </ul>
-        </li>
-    </ul>
+<div class='mainContainer'>
+	<div class='content'>
+		<div class='header budget-grid'>
+			<h1 class='budget-unit size7of8'>Budget for <?=$currUserName?></h1>
+			<a class='budget-unit size1of8' href='logout.php'>Logout</a>
+		</div>
+		
+		<div class='blockHeader'>
+            <h3>Add a new Entry</h3>
+		</div>
+		<form method='POST' action='AddTrxn.php' class='budget-grid' id='addTrxnForm'>
+			<label class='budget-unit size1of2' for='desc'>Describe your transaction breifly (optional): </label>
+			<input class='budget-unit size1of2' type='text' name='desc' />
+			<br/>
+			<label class='budget-unit size1of2' for='amount'>Amount: </label>
+			<input class='budget-unit size1of6' type='number' name='amount' />
+			<br/>
+			<label class='budget-unit size1of2' for='category'>Category: </label>
+			<select class='budget-unit' name='category'>
+			<?php foreach ($categories as $cat) {?>
+                <option value='<?=$cat->id?>'><?=ucfirst($cat->name)?></option>
+            <?php } ?>
+			</select>
+			<br/>
+			<label class='budget-unit size1of2' for='trxntype'>Type: </label>
+			<select class='budget-unit' name='trxntype'>
+			<?php foreach ($trxnTypes as $t) {?>
+                <option value='<?=$t->id?>'><?=ucfirst($t->name)?></option>
+            <?php } ?>
+			</select>
+		    <br/>
+		    <br/>
+		    <input type='submit' value='Submit' />
+		</form>
+		
+		<br/>
+		
+		<div class='blockHeader'>
+		    <h3>Summary</h3>
+		</div>
+		<div id='trxnsummary'>
+		    <ul>
+		        <li>
+		            <ul class='trxnrow header'>
+		                <li>Category</li>
+		                <li>Description</li>
+		                <li>Amount</li>
+		            </ul>
+		        </li>
+		        <?php foreach ($trxns as $trxn) { ?>
+		        <li>
+		            <ul class='trxnrow <?php if($trxn->type=='earn'){ echo 'earn';}?>'>
+		                <li><?=$trxn->category?></li>
+		                <li><?=$trxn->description?></li>
+		                <li><?=(($trxn->type=='earn')?'-':'').'$'.number_format($trxn->amount, 2);?></li>
+		            </ul>
+		        </li>
+		        <?php } ?>
+		        <li>
+		            <ul class='trxnrow header'>
+		                <li class='empty'></li>
+		                <li>Total spent: </li>
+		                <li><?='$'.number_format($total, 2);?></li>
+		            </ul>
+		        </li>
+		    </ul>
+		</div>
+	</div>
 </div>
-
-<br/>
-<br/>
-<a href='logout.php'>Logout</a>
 
 <?php
 

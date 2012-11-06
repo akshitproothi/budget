@@ -65,6 +65,34 @@ class TrxnFactory {
         
         return $summary;
     }
+    
+    public static function getCategories () {
+    	$sql = "SELECT
+                    c.pk_category_id id
+                    ,c.name name
+                FROM tb_category c
+                ORDER BY pk_category_id";
+        
+        $parameters = array();
+        $datatypes  = array();
+        $result = DbFactory::queryDb($sql, $parameters, $datatypes);
+        
+        return $result;
+    }
+    
+    public static function getTypes () {
+        $sql = "SELECT
+                    pk_trxn_type_id id
+                    ,name
+                FROM tb_trxn_type tt
+                ORDER BY pk_trxn_type_id";
+        
+        $parameters = array();
+        $datatypes  = array();
+        $result = DbFactory::queryDb($sql, $parameters, $datatypes);
+        
+        return $result;
+    }
 
 }
 
