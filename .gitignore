@@ -164,3 +164,7 @@ pip-log.txt
 
 *.idx
 *tags*
+
+# XCODE JUNK
+*.xcuserstate
+*.xcworkspacedata
